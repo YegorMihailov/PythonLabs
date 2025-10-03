@@ -1,20 +1,56 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+"""
+Главный модуль для запуска калькулятора.
+"""
 
+from calculator import Calculator
 
 def main() -> None:
-    """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-    :return: Данная функция ничего не возвращает
-    """
+    """Главная функция для интерактивного режима калькулятора."""
+    calculator = Calculator()
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
+    while True:
+        try:
+            user_input = input(">>> ").strip()
 
-    result = power_function(target=target, power=degree)
+            if user_input.lower() in ('quit', 'exit', 'q'):
+                print("Выход из программы")
+                break
 
-    print(result)
+            if not user_input:
+                continue
 
-    print(SAMPLE_CONSTANT)
+            elif user_input == 'vars':
+                variables = calculator.get_variables()
+                if variables:
+                    print("Переменные:")
+                    for name, value in variables.items():
+                        print(f"  {name} = {value}")
+                else:
+                    print("Переменные не объявлены")
+                continue
+
+            elif user_input == 'funcs':
+                functions = calculator.get_available_functions()
+                print("Доступные функции:", ', '.join(sorted(functions)))
+                continue
+
+            elif user_input == 'clear':
+                calculator.clear_variables()
+                print("Все переменные очищены")
+                continue
+
+            # Вычисление выражения
+            result = calculator.calculate(user_input)
+            print(f"Результат: {result}")
+
+        except ValueError as error:
+            print(f"Ошибка: {error}")
+        except KeyboardInterrupt:
+            print("\nВыход из программы")
+            break
+        except Exception as error:
+            print(f"Неизвестная ошибка: {error}")
+
 
 if __name__ == "__main__":
     main()
