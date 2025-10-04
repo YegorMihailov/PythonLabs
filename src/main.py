@@ -12,7 +12,7 @@ def main() -> None:
         try:
             user_input = input(">>> ").strip()
 
-            if user_input.lower() in ('quit', 'exit', 'q'):
+            if user_input.lower() in ('exit'):
                 print("Выход из программы")
                 break
 

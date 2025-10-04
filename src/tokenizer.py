@@ -69,4 +69,4 @@ class Tokenizer:
         """
         if not isinstance(token, str):
             return False
-        return bool(re.fullmatch(r'[a-zA-Z_][a-zA-Z0-9_]*', token))
+        return bool(re.match(r'[a-zA-Z_][a-zA-Z0-9_]*', token))

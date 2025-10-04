@@ -1,14 +1,12 @@
 """
-Unit-тесты для класса Calculator с использованием unittest.
+Unit-тесты для класса калькулятора с использованием unittest.
 """
 
 import unittest
-import math
 import sys
 import os
 from typing import Any
 
-# Добавляем путь к src
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from calculator import Calculator
@@ -27,7 +25,7 @@ class TestCalculatorBasic(unittest.TestCase):
     
     def test_calculate_basic_arithmetic(self) -> None:
         """
-        Тестирует базовые арифметические операции.
+        Тестирует арифметические операции.
         """
         test_cases = [
             ("2 + 3", 5),
@@ -36,6 +34,8 @@ class TestCalculatorBasic(unittest.TestCase):
             ("15 / 3", 5.0),
             ("2 + 3 * 4", 14),
             ("(2 + 3) * 4", 20),
+            ("15 // 3", 5),
+            ("16 % 3", 1)
         ]
         
         for expression, expected in test_cases:

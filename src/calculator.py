@@ -38,13 +38,7 @@ class Calculator:
             'sqrt': math.sqrt,
             'pow': pow,
             'max': max,
-            'min': min,
-            'sin': math.sin,
-            'cos': math.cos,
-            'tan': math.tan,
-            'log': math.log,
-            'log10': math.log10,
-            'exp': math.exp,
+            'min': min
         }
 
     def get_current_token(self) -> Optional[str]:
@@ -131,13 +125,12 @@ class Calculator:
             self.consume_token(')')
             return result
         
-        # ИСПРАВЛЕНИЕ: Вызов статических методов через класс, а не через экземпляр
-        elif Tokenizer.is_digit_token(token):  # Было: self._tokenizer.is_digit_token(token)
+        elif Tokenizer.is_digit_token(token):
             number_token = self.consume_token()
             return self.parse_number(number_token)
         
-        # ИСПРАВЛЕНИЕ: Тоже для is_identifier
-        elif Tokenizer.is_identifier(token):  # Было: self._tokenizer.is_identifier(token)
+       
+        elif Tokenizer.is_identifier(token):
             identifier = self.consume_token()
             next_token = self.get_current_token()
             
