@@ -48,9 +48,12 @@
 ```bash
 git clone https://github.com/YegorMihailov/PythonLabs.git
 cd lab1
-pip install -e .
+pip install -e 
+
+## Запуск
+
+uv run -m src.main
 
 ## Запуск тестов
 
-python test.py
-
+uv run -m unittest
