@@ -2,7 +2,7 @@
 Главный модуль для запуска калькулятора.
 """
 
-from calculator import Calculator
+from src.calculator import Calculator
 
 def main() -> None:
     """Главная функция для интерактивного режима калькулятора."""

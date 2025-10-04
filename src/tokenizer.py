@@ -4,7 +4,7 @@
 
 import re
 from typing import List
-from constants import TOKEN_PATTERN
+from src.constants import TOKEN_PATTERN
 
 
 class Tokenizer:
